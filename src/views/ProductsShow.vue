@@ -7,23 +7,25 @@
       </ul>
       <div>
         <label>Name:</label>
-        <input type="text" v-model="Product.name" />
+        <input type="text" v-model="product.name" />
       </div>
       <div>
         <label>Price:</label>
-        <input type="text" v-model="Product.price" />
+        <input type="text" v-model="product.price" />
       </div>
       <div>
         <label>Description:</label>
-        <input type="text" v-model="Product.description" />
+        <input type="text" v-model="product.description" />
       </div>
       <div>
         <label>Supplier ID:</label>
-        <input type="text" v-model="Product.supplier_id" />
+        <input type="text" v-model="product.supplier_id" />
       </div>
       <input type="submit" value="Update" />
       <br>
     </form>
+    <router-link to="/products">Back</router-link>
+    <br>
     <button v-on:click="deleteFunction()">Delete</button>
   </div>
 </template>
@@ -35,7 +37,7 @@ import axios from 'axios';
   export default {
     data: function () {
       return {
-        Product: {},
+        product: {},
         errors: []
       };
     },
@@ -46,7 +48,7 @@ import axios from 'axios';
       submit: function () {
         console.log("in the edit Function")
         axios
-          .patch(`/products/${this.$route.params.id}`, this.editProductParams)
+          .patch(`/products/${this.$route.params.id}`, this.editproductParams)
           .then(response => {
             console.log(response.data);
             this.$router.push('/products');
@@ -58,7 +60,7 @@ import axios from 'axios';
           .get(`/products/${this.$route.params.id}`)
           .then(response => {
             console.log(response.data);
-            this.Product = response.data;
+            this.product = response.data;
           })
       },
       deleteFunction() {

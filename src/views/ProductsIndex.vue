@@ -3,12 +3,25 @@
     <h1>{{ message }}</h1>
     <ul>
       <li v-for="product in products">
-        <p>ID: {{ product.id }}</p>
         <p>Name: {{ product.name }}</p>
         <p>Price: {{ product.price }}</p>
-        <router-link v-bind:to="`/products/${product.id}`">Show More Info</router-link>
+        <button v-on:click="showModal(product)">Show More Info</button>
       </li>
     </ul>
+    <dialog id="show-modal">
+      <form method="dialog">
+        <p>ID: {{ currentProduct.id }}</p>
+        <p>Name: {{ currentProduct.name }}</p>
+        <p>Price: {{ currentProduct.price }}</p>
+        <p>Tax: {{ currentProduct.tax }}</p>
+        <p>Total: {{ currentProduct.total }}</p>
+        <p>Description: {{ currentProduct.description }}</p>
+        <p>Supplier ID: {{ currentProduct.supplier_id }}</p>
+        <router-link v-bind:to="`/products/${currentProduct.id}`">Edit Product</router-link>
+        <br>
+        <button>Close</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
@@ -20,7 +33,8 @@
     data: function () {
       return {
         message: "All Products!",
-        products: []
+        products: [],
+        currentProduct: {}
       };
     },
     created: function () {
@@ -35,6 +49,11 @@
             console.log(response.data);
             this.products = response.data
           })
+      },
+      showModal: function(theProduct) {
+        console.log("in the show modal");
+        document.querySelector("#show-modal").showModal();
+        this.currentProduct = theProduct;
       }
     },
   };
