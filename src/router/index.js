@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import ProductsIndex from '../views/ProductsIndex.vue'
 import ProductsNew from '../views/ProductsNew.vue'
 import ProductsEdit from '../views/ProductsEdit.vue'
+import ProductsShow from '../views/ProductsShow.vue'
 
 Vue.use(VueRouter)
 
@@ -32,9 +33,14 @@ const routes = [
     component: ProductsNew
   },
   {
-    path: '/products/:id',
+    path: '/products/:id/edit',
     name: 'products-edit',
     component: ProductsEdit
+  },
+  {
+    path: '/products/:id',
+    name: 'products-show',
+    component: ProductsShow
   }
 ]
 

@@ -6,6 +6,7 @@
         <p>ID: {{ product.id }}</p>
         <p>Name: {{ product.name }}</p>
         <p>Price: {{ product.price }}</p>
+        <router-link v-bind:to="`/products/${product.id}`">Show More Info</router-link>
       </li>
     </ul>
   </div>
