@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import ProductsIndex from '../views/ProductsIndex.vue'
 import ProductsNew from '../views/ProductsNew.vue'
+import ProductsEdit from '../views/ProductsEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/products/new',
     name: 'products-new',
     component: ProductsNew
+  },
+  {
+    path: '/products/:id',
+    name: 'products-edit',
+    component: ProductsEdit
   }
 ]
 
