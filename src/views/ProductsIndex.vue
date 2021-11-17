@@ -5,7 +5,10 @@
       <li v-for="product in products">
         <p>Name: {{ product.name }}</p>
         <p>Price: {{ product.price }}</p>
+        <img v-bind:src="product.images">
+        <br>
         <button v-on:click="showModal(product)">Show More Info</button>
+        <hr>
       </li>
     </ul>
     <dialog id="show-modal">
